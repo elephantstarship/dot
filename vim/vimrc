@@ -1,0 +1,91 @@
+" OPTIONS 
+
+syntax on
+filetype plugin on
+filetype indent on
+
+set number
+set relativenumber
+set cursorline
+set autoindent
+set autoread
+set hidden
+set lazyredraw
+
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
+set nobackup
+set scrolloff=10
+set nowrap
+
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+set nohlsearch
+
+set history=1000
+set clipboard=unnamed
+
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+set ttimeout
+set ttimeoutlen=1
+
+" PLUGINS
+
+call plug#begin('~/.vim/plugged')
+  Plug 'tpope/vim-commentary' " Easily comment/uncomment lines
+  Plug 'ap/vim-css-color'  " Show CSS colors inline
+  Plug 'zenbones-theme/zenbones.nvim' " Zen-inspired theme for Vim
+call plug#end()
+
+" MAPPINGS
+
+let mapleader = "\ "
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" VIMSCRIPT 
+
+" Only enable cursorline in the active window
+augroup cursor_off
+    autocmd!
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter * set cursorline
+augroup END
+
+" Folding for Vim files
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" Undo history
+if version >= 703
+    set undodir=~/.vim/backup
+    set undofile
+    set undoreload=10000
+endif
+
+" Colors and theme
+if has('termguicolors')
+    set termguicolors
+endif
+
+set background=dark
+colorscheme zenwritten
+
+set statusline=%t

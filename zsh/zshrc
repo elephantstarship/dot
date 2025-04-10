@@ -1,0 +1,66 @@
+[ -z "$DOTFILES" ] && echo "DOTFILES not set" && exit 1
+[ -z "$DOT_PROFILE_PATH" ] && echo "DOT_PROFILE_PATH not set" && exit 1
+
+# Load completions from user-generated path
+fpath=(~/.zfunc $fpath)
+
+# Navigation and globbing
+setopt CDABLE_VARS
+setopt EXTENDED_GLOB
+
+# Directory stack behavior
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+# History: shared, deduplicated, silent
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+
+# Source aliases
+[[ -f "$DOTFILES/zsh/aliases.zsh" ]] && source "$DOTFILES/zsh/aliases.zsh"
+[[ -f "$DOT_PROFILE_PATH/aliases.zsh" ]] && source "$DOT_PROFILE_PATH/aliases.zsh"
+
+# Source functions
+[[ -f "$DOTFILES/zsh/functions.zsh" ]] && source "$DOTFILES/zsh/functions.zsh"
+[[ -f "$DOT_PROFILE_PATH/functions.zsh" ]] && source "$DOT_PROFILE_PATH/functions.zsh"
+
+# Prompt
+fpath+="$DOTFILES/zsh/prompt"
+source "$DOTFILES/zsh/prompt.zsh"
+
+# Completions
+source "$DOTFILES/zsh/completion.zsh"
+
+# fzf
+if command -v fzf >/dev/null; then
+  source "$DOTFILES/zsh/fzf.zsh"
+fi
+
+# Normal mode 'v' = edit command in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# Reduce ESC delay for keymap switching
+KEYTIMEOUT=1
+
+# Use consistent compdump location
+ZCOMPDUMP="$HOME/.zcompdump"
+compinit -d "$ZCOMPDUMP"
+
+# Zsh history settings
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=50000
+SAVEHIST=50000
+
+# Optional: profile startup
+# zmodload zsh/zprof
+

@@ -1,0 +1,10 @@
+# Homebrew (only if available)
+if command -v brew >/dev/null && [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Pyenv
+if command -v pyenv >/dev/null; then
+  eval "$(pyenv init - 2>/dev/null)"
+fi
+
