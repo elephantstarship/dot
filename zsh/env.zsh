@@ -27,6 +27,4 @@ info:#5f5f5f,prompt:#5f5f5f,spinner:#87afd7,pointer:#87afd7,marker:#87afd7,borde
 
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 20' --preview-window=right:60%:wrap:hidden"
 
-# Go
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+
