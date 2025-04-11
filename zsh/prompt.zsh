@@ -3,7 +3,7 @@ autoload -Uz colors && colors
 function update_prompt() {
   local cwd="${PWD##*/}"
   local venv=""
-  [[ -n "$VIRTUAL_ENV" ]] && venv="(%F{green}${VIRTUAL_ENV:t}%f) "
+  [[ -n "$VIRTUAL_ENV" ]] && venv="%F{240}${VIRTUAL_ENV:t}%f " || venv=""
 
   if [[ $KEYMAP == vicmd ]]; then
     PROMPT="%B%F{242}∷%f %F{242}${cwd}%f%b "
