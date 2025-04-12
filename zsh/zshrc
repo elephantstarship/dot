@@ -49,6 +49,10 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
+# Rebind backspace to call backward-delete-char widget.
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+
 # Reduce ESC delay for keymap switching
 KEYTIMEOUT=1
 
