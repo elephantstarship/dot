@@ -55,6 +55,7 @@ completions:
 	@command -v docker >/dev/null && docker completion zsh > ~/.zfunc/_docker || true
 	@command -v podman >/dev/null && podman completion zsh > ~/.zfunc/_podman || true
 	@command -v eksctl >/dev/null && eksctl completion zsh > ~/.zfunc/_eksctl || true
+	@command -v poetry >/dev/null && poetry completions zsh > ~/.zfunc/_poetry || true
 	@[ -x /opt/homebrew/bin/aws_completer ] && echo 'complete -C /opt/homebrew/bin/aws_completer aws' > ~/.zfunc/_aws || true
 
 clean:
