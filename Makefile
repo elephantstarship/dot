@@ -31,40 +31,28 @@ all: check zsh vim tmux completions
 
 zsh:
 	@echo "→ zsh"
-	@./install/install-zsh.sh
+	@./scripts/install-zsh.sh
 
 vim:
 	@echo "→ vim"
-	@./install/install-vim.sh
+	@./scripts/install-vim.sh
 
 tmux:
 	@echo "→ tmux"
-	@./install/install-tmux.sh
+	@./scripts/install-tmux.sh
 
 ghostty:
 	@echo "→ ghostty"
-	@./install/install-ghostty.sh
+	@./scripts/install-ghostty.sh
 
 completions:
 	@echo "→ completions"
-	@mkdir -p ~/.zfunc
-	@command -v kubectl >/dev/null && kubectl completion zsh > ~/.zfunc/_kubectl || true
-	@command -v helm >/dev/null && helm completion zsh > ~/.zfunc/_helm || true
-	@command -v flux >/dev/null && flux completion zsh > ~/.zfunc/_flux || true
-	@command -v tkn >/dev/null && tkn completion zsh > ~/.zfunc/_tkn || true
-	@command -v docker >/dev/null && docker completion zsh > ~/.zfunc/_docker || true
-	@command -v podman >/dev/null && podman completion zsh > ~/.zfunc/_podman || true
-	@command -v eksctl >/dev/null && eksctl completion zsh > ~/.zfunc/_eksctl || true
-	@command -v poetry >/dev/null && poetry completions zsh > ~/.zfunc/_poetry || true
-	@[ -x /opt/homebrew/bin/aws_completer ] && echo 'complete -C /opt/homebrew/bin/aws_completer aws' > ~/.zfunc/_aws || true
+	@./scripts/install-completions.sh
 
 clean:
 	@echo "→ clean"
-	@rm -f $(HOME)/.zshenv
-	@rm -f $(HOME)/.zshrc
-	@rm -f $(HOME)/.zprofile
-	@rm -f $(HOME)/.vimrc
-	@rm -f $(CONFIG_HOME)/tmux/tmux.conf
-	@rm -f $(CONFIG_HOME)/tmux/zenwritten.tmux
-	@rm -f $(CONFIG_HOME)/ghostty/config
+	@./scripts/clean.sh
 
+test:
+	@echo "→ test"
+	@./scripts/test.sh
