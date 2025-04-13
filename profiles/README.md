@@ -13,5 +13,5 @@ Environment-specific configuration overrides.
 3. Set the profile:
 
    ```sh
-   echo myprofile > ~/.config_profile
+   echo myprofile > ~/.dot_profile
    ```

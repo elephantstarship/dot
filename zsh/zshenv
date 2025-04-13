@@ -7,7 +7,7 @@ export DOTFILES="$HOME/.dot"
 [ -f "$DOTFILES/zsh/env.zsh" ] && source "$DOTFILES/zsh/env.zsh"
 
 # Load profile-specific environment vars
-DOT_PROFILE="${$(cat "$HOME/.config_profile" 2>/dev/null):-default}"
+DOT_PROFILE="${$(cat "$HOME/.dot_profile" 2>/dev/null):-default}"
 DOT_PROFILE_PATH="$DOTFILES/profiles/$DOT_PROFILE"
 [ -f "$DOT_PROFILE_PATH/env.zsh" ] && source "$DOT_PROFILE_PATH/env.zsh"
 

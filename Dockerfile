@@ -42,7 +42,7 @@ ENV PATH="${PATH}:/home/${USERNAME}/.fzf/bin"
 
 # dotfiles
 COPY . /home/${USERNAME}/.dot
-RUN echo docker > ~/.config_profile
+RUN echo docker > ~/.dot_profile
 
 WORKDIR /home/${USERNAME}/.dot
 RUN make clean && make all INSTALL_GHOSTTY=0

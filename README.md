@@ -45,7 +45,7 @@ make all
 To use a custom profile:
 
 ```sh
-echo myprofile > ~/.current_profile
+echo myprofile > ~/.dot_profile
 ```
 
 If unset, the `default` profile is used.
