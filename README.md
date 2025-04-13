@@ -36,7 +36,13 @@ These are typically available via your system's package manager.
 
 ## Installation
 
-Clone anywhere. Then:
+Clone the repository to ~/.dot.
+
+```sh
+git clone git@github.com:elephantstarship/dot.git ~/.dot
+```
+
+Then, inside the repository, run:
 
 ```sh
 make all
