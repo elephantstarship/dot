@@ -1,5 +1,9 @@
 *
+
 !default/
 !docker/
 !README.md
 !.gitignore
+
+!default/**
+!docker/**
