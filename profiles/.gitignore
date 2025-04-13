@@ -1,5 +1,5 @@
 *
-!default/*
-!docker/*
+!default/
+!docker/
 !README.md
 !.gitignore
