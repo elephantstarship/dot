@@ -2,17 +2,14 @@
 export CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/.dot"
 
-# Load global environment secrets and vars
+# Determine current profile and set DOT_PROFILE_PATH
+DOT_PROFILE="${$(cat "$HOME/.dot_profile" 2>/dev/null):-default}"
+export DOT_PROFILE_PATH="$DOTFILES/profiles/$DOT_PROFILE"
+
+# Load environment secrets and vars
 [ -f "$HOME/.env" ] && source "$HOME/.env"
 [ -f "$DOTFILES/zsh/env.zsh" ] && source "$DOTFILES/zsh/env.zsh"
-
-# Load profile-specific environment vars
-DOT_PROFILE="${$(cat "$HOME/.dot_profile" 2>/dev/null):-default}"
-DOT_PROFILE_PATH="$DOTFILES/profiles/$DOT_PROFILE"
 [ -f "$DOT_PROFILE_PATH/env.zsh" ] && source "$DOT_PROFILE_PATH/env.zsh"
-
-# Export the profile path for zshrc
-export DOT_PROFILE_PATH
 
 # Use Vim as pager for manpages
 export MANPAGER="vim +Man!"
