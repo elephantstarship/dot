@@ -1,0 +1,5 @@
+*
+!default/*
+!docker/*
+!README.md
+!.gitignore
