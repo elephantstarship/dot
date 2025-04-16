@@ -11,5 +11,6 @@ command -v docker >/dev/null && docker completion zsh > "$ZFUNC_DIR/_docker" || 
 command -v podman >/dev/null && podman completion zsh > "$ZFUNC_DIR/_podman" || true
 command -v eksctl >/dev/null && eksctl completion zsh > "$ZFUNC_DIR/_eksctl" || true
 command -v poetry >/dev/null && poetry completions zsh > "$ZFUNC_DIR/_poetry" || true
+command -v talosctl >/dev/null && talosctl completion zsh > "$ZFUNC_DIR/_talosctl" || true
 [ -x /opt/homebrew/bin/aws_completer ] && echo 'complete -C /opt/homebrew/bin/aws_completer aws' > "$ZFUNC_DIR/_aws" || true
 
