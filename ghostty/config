@@ -1,4 +1,4 @@
-copy-on-select = clipboard
+hcopy-on-select = clipboard
 cursor-style = bar
 cursor-style-blink = false
 focus-follows-mouse = true
